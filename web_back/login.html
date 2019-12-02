@@ -30,6 +30,7 @@
         </div>
 
     </div>
+    <!-- 模态框位置 引入bootstrap的css和js（在js之后引用）设置模态框id 给p 添加一个id.text('用户名不饿能胃口') -->
     <script>
         // 点击登录阻止表单提交，获取用户名和密码，
         // 验证密码用户名，调用接口正确跳转首页提示，不正确：提示
@@ -38,6 +39,7 @@
             var username = $('input_txt').val().trim();
             var psw = $('input_pass').val().trim();
             // 不能为空
+            // 模态框显示位置！！！！！！$('#xxx').modal('show')！！！！！！！
             if(username ===''||psw === ''){
                 alert('buneng');
                 return;
@@ -45,6 +47,7 @@
             // $.post(请求url，请求函数，回调函数，返回数据类型)
             $('/admin/login',{user_name:username,password:psw},function(res){
               alert(res.msg);
+            //   $('#xxx').modal('show')显示弹框
               if(res.code === 200){
                 //   跳转后台首页
                 location.href = 'index.html'
@@ -52,7 +55,8 @@
             })
         });
        
-
+    //   layer.layui.com   简单
+    // bootstrap
     </script>
 
 </body>
