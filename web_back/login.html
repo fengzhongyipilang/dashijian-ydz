@@ -23,13 +23,37 @@
             <form class="login_form">
                 <i class="iconfont icon-user"></i>
                 <i class="iconfont icon-key"></i>
-                <input type="text" class="input_txt" placeholder="邮箱/手机号">
+                <input type="text" class="input_txt" placeholder="用户名">
                 <input type="password" class="input_pass" placeholder="密码">
-                <input type="submit" class="input_sub" value="登 录">
+                <input id='btn' type="button" class="input_sub" value="登 录">
             </form>
         </div>
 
-    </div> 
+    </div>
+    <script>
+        // 点击登录阻止表单提交，获取用户名和密码，
+        // 验证密码用户名，调用接口正确跳转首页提示，不正确：提示
+        $('#btn').click(function () {
+            // 获取用户名密码
+            var username = $('input_txt').val().trim();
+            var psw = $('input_pass').val().trim();
+            // 不能为空
+            if(username ===''||psw === ''){
+                alert('buneng');
+                return;
+            }
+            // $.post(请求url，请求函数，回调函数，返回数据类型)
+            $('/admin/login',{user_name:username,password:psw},function(res){
+              alert(res.msg);
+              if(res.code === 200){
+                //   跳转后台首页
+                location.href = 'index.html'
+              }
+            })
+        });
+       
+
+    </script>
 
 </body>
 
