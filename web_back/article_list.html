@@ -103,51 +103,39 @@
 
     <script>
         // --------------------------  获取数据 ---------------
-        var data = {
-            // key: '的', // 搜索关键字
-            // type: 1, // 搜索类型id为1的文章
-            // state: '已发布', // 根据文章的状态搜索
-            page: 1, // 表示页码
-            // id: 2 // 获取id为2的一篇文章
-        };
-
-        function loadData() {
+        var data = { page: 2}
+        function locaData() {
             article.get(data, function (res) {
-                console.log(res);
-                // 有数据了，可以使用模板引擎了
+                // alert(res.msg);
+                console.log(res); // 调用模板函数
                 var str = template('article', {
                     xyz: res.data
-                });
-                // 把最终的拼接好的结果，放到tbody中
+                })
+                // 把多个tr放到tody中
                 $('tbody').html(str);
-                // 渲染完数据，调用showPage显示页码
+                // 数据加载完毕，调用页码
                 showPage(res.page, res.totalPage);
-            });
+            })
+
         }
-        // 页面刷新调用一次
-        loadData();
+        locaData();
+
 
     </script>
 
     <script>
-
-        function showPage (c, t) {
+        // 页码显示
+        function showPage(c,t) {
             $("#pagination").pagination({
-                currentPage: c, // 当前页
-                totalPage: t, // 总页数
-                count: 10, // 中间的页码数量
-
-                // callback是点击页码后触发的一个函数
+                currentPage: c,
+                totalPage: t,
                 callback: function (current) {
-                    // alert('ok!');
-                    // alert(current); // current 是点击的页码
+                    //    console.log(current);
                     data.page = current;
-                    loadData();
+                    locaData();
                 }
             });
         }
-            
-
     </script>
 
 </body>

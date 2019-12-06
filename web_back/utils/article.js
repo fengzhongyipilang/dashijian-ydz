@@ -6,16 +6,29 @@ var article = {
     },
 
 
-    add: function (fd, callback) {
+    // add: function (fd, callback) {
+    //     $.ajax({
+    //         type: 'POST',
+    //         url: apis.article_add,
+    //         data: fd,
+    //         success: function (res) {
+    //             callback(res);
+    //         },
+    //         processData: false,
+    //         contentType: false
+    //     });
+    // },
+    
+    add : function (fd,callback) {  
         $.ajax({
-            type: 'POST',
+            type:'POST',
             url: apis.article_add,
-            data: fd,
-            success: function (res) {
+            data:fd,
+            success: function (res) { 
                 callback(res);
-            },
-            processData: false,
-            contentType: false
+             },
+             processData: false,
+             contentType:false
         });
     },
-};
+}
