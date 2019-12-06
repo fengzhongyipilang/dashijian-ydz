@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="./js/jquery-1.12.4.min.js"></script>
+    <script src="./js/template-web.js"></script>
+
+    <script type="text/html" id="moban">
+        <h2>{{title}}</h2>
+        <p>{{type}}</p>
+        <div></div>
+    </script>
+
+
+    <script>
+
+        $.get('http://localhost:8000/article?id=8', function (res) {
+            // console.log(res.data);
+            // console.log({
+            //     title: '这是一个标题',
+            //     age: 20,
+            //     heroes: ['亚索', '狐狸', '德玛']
+            // });
+
+            var str = template('moban', res.data);
+
+            // var str = template('moban', {});
+
+            console.log(str);
+        });
+
+        
+    </script>
+</body>
+
+</html>
