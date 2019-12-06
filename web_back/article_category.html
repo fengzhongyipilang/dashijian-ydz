@@ -70,6 +70,40 @@
         </div>
     </div>
 
+
+    <div class="modal fade" id="editModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                    <h4 class="modal-title">修改分类</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="recipient-name" class="control-label">分类名称:</label>
+                            <input type="text" class="form-control" id="edit-name">
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="control-label">分类别名:</label>
+                            <input type="text" class="form-control" id="edit-slug">
+                        </div>
+                        <div class="form-group">
+                            <label for="recipient-name" class="control-label">id:</label>
+                            <input type="text" class="form-control" id="edit-id">
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="edit_shutoff">不改了</button>
+                    <button type="button" class="btn btn-primary" id="edit_add">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!-- 编辑的模态框 start -->
     <!-- <div class="modal fade" id="editModal">
         <div class="modal-dialog" role="document">
@@ -171,7 +205,7 @@
         loadData();
         function loadData() {
             category.get(function (res) {
-                console.log(res);
+                // console.log(res);
                 // 调用template函数
                 // 函数的参数1：模板的id
                 // 函数的参数2：需要展示的数据（必须写成对象形式）
@@ -188,16 +222,16 @@
 
     <script>
         // -------------------------------------- 删除功能 --------------------------
-        $('body').on('click','.btn-danger',function(){
-            if(!confirm('你确定要删除吗？')) return;
+        $('body').on('click', '.btn-danger', function () {
+            if (!confirm('你确定要删除吗？')) return;
             var id = $(this).attr('data-id');
             var that = $(this);
-            category.delete(id , function(res){
+            category.delete(id, function (res) {
                 alert(res.msg);
                 that.parents('tr').remove();
             })
         })
-    
+
     </script>
 
     <!-- <script>
@@ -243,23 +277,52 @@
         //
     </script> -->
     <script>
-    // ---------------------编辑功能----------------------------
+        // ---------------------编辑功能----------------------------
 
-//   点击事件编辑
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+        //   1编辑 2关闭 3保存 三个点击事件
+        $('body').on('click', '.btn-info', function () {
+            // 让模态框显示
+            $('#editModal').modal('show');
+            // 获取当前分类的三个data属性
+            var data = this.dataset;//dataset是dom属性要用this属性，可以获取所有的data-xxx 属性
+            // console.log(data);
+            $('#edit-name').val(data.name)
+            $('#edit-slug').val(data.slug)
+            $('#edit-id').val(data.id)
+            
+        })
+
+        // 点击不改了隐藏模态框
+        $('#edit_shutoff').click(function () {
+            $('#editModal').modal('hide');
+
+        })  
+        // 点击保存隐藏模态框
+        $('#edit_add').click(function () {
+            var name = $('#edit-name').val()
+            var slug = $('#edit-slug').val()
+            var id = $('#edit-id').val()
+        //    调用接口 完成真正的修改， 修改结束，渲染页面
+         category.edit(id,name,slug,function(res){
+
+         })
+
+
+            $('#editModal').modal('hide');
+
+        })
+
+
+
+
+
+
+
+
+
+
     </script>
-    
+
 </body>
 
 </html>
