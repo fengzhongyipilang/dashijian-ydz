@@ -71,7 +71,7 @@
     </div>
 
     <!-- 编辑的模态框 start -->
-    <div class="modal fade" id="editModal">
+    <!-- <div class="modal fade" id="editModal">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -97,7 +97,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- 编辑的模态框 end -->
 
     <script src="./utils/config.js"></script>
@@ -184,32 +184,23 @@
             });
 
         }
-
     </script>
 
     <script>
         // -------------------------------------- 删除功能 --------------------------
-        $('body').on('click', '.btn-danger', function () {
-            // 询问是否要删除
-            if (!confirm('你是否要删除？')) return;
-            // 获取id
+        $('body').on('click','.btn-danger',function(){
+            if(!confirm('你确定要删除吗？')) return;
             var id = $(this).attr('data-id');
             var that = $(this);
-            // 调用封装好的 category.delete(); 完成删除即可
-            category.delete(id, function (res) {
-                // console.log(res);
-                alert(res.msg); // 无论成功还是失败，都要给出提示
-                if (res.code === 200) {
-                    // 成功，从新加载数据
-                    // loadData();
-                    // 成功，也可以移除当前的tr
-                    that.parents('tr').remove();
-                }
-            });
-        });
+            category.delete(id , function(res){
+                alert(res.msg);
+                that.parents('tr').remove();
+            })
+        })
+    
     </script>
 
-    <script>
+    <!-- <script>
         // ------------------------------- 编辑功能 -------------------
         // 点击关闭
         $('#edit_shutoff').click(function () {
@@ -250,8 +241,25 @@
             $('#editModal').modal('show');
         });
         //
-    </script>
+    </script> -->
+    <script>
+    // ---------------------编辑功能----------------------------
 
+//   点击事件编辑
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </script>
+    
 </body>
 
 </html>
