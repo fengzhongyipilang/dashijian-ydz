@@ -1,34 +1,8 @@
-var article = {
-    get: function (data, callback) {
-        $.get(apis.article_get, data, function (res) {
-            callback(res);
-        });
-    },
+var category = {
+    show: function (callback) {  
+    $.get(apis.category_show,success(responseText){
+     callback(res);
+    })
 
-
-    // add: function (fd, callback) {
-    //     $.ajax({
-    //         type: 'POST',
-    //         url: apis.article_add,
-    //         data: fd,
-    //         success: function (res) {
-    //             callback(res);
-    //         },
-    //         processData: false,
-    //         contentType: false
-    //     });
-    // },
-    
-    add : function (fd,callback) {  
-        $.ajax({
-            type:'POST',
-            url: apis.article_add,
-            data:fd,
-            success: function (res) { 
-                callback(res);
-             },
-             processData: false,
-             contentType:false
-        });
-    },
+}
 }

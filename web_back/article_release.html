@@ -90,7 +90,7 @@
     <script>
         // 获取分类，渲染到下拉框中
         category.get(function (res) {
-            console.log(res);
+            // console.log(res);
             var str = template('category', {
                 arr: res.data
             });
@@ -104,6 +104,8 @@
         $('.btn-success').click(function () {
             // 使用FormData收集表单各项的值
             var fd = new FormData(document.querySelector('form'));
+            console.log(fd);
+            
             // 使用FormData，要检测表单各项有没有name属性。name属性值是否和接口要求的参数对应
             // 追加一项state为已发布
             fd.append('state', '已发布');
@@ -112,6 +114,7 @@
 
             // 使用准备好的方法，完成添加
             article.add(fd, function (res) {
+                
                 // console.log(res);
                 if (res.code === 201) {
                     // 成功，跳转到article_list.html

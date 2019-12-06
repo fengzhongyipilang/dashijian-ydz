@@ -141,6 +141,9 @@
     <script src="./utils/category.js"></script>
     <script src="./utils/article.js"></script>
 
+
+
+
     <!------------------------------------------------ 导航分类 start -------------------------------------->
     <script type="text/html" id="fenlei">
         {{each fenlei v}}
@@ -149,76 +152,32 @@
     </script>
 
     <script>
-        category.show(function (res) {
-            // console.log(res);
-            var str = template('fenlei', {
+        // 获取请求结果
+        category.show(function (res) { 
+            console.log(res);
+            var str = template('fenlei',{
                 fenlei: res.data
-            });
-            // 把拼接好的结果，放到指定位置
+            })
+            // 把拼接结果添加到指定位置，
             $('.level_two').append(str);
-            $('.left_menu').html(str);
-        });
+            $('.left_menu').append(str)
+         })
+    
     </script>
+
     <!------------------------------------------------ 导航分类 end -------------------------------------->
 
 
+
     <!------------------------------------------------ 热点图 start -------------------------------------->
-    <script type="text/html" id="redian">
-        {{each redian v k}}
-        {{if k === 0}}
-        <li class="first">
-        {{else}}
-        <li>
-        {{/if}}
-        
-            <a href="article.html?id={{v.id}}"><img src="{{v.cover}}" alt=""></a>
-            <p>{{v.title}}</p>
-        </li>
-        {{/each}}
-    </script>
-
-    <script>
-        article.hotpic(function (res) {
-            // console.log(res);
-            var str = template('redian', {
-                redian: res.data
-            });
-            // 得到的str，放到 类名为 focus_list 的ul里面
-            $('.focus_list').html(str);
-        });
-    </script>
     <!------------------------------------------------ 热点图 end -------------------------------------->
-    <!------------------------------------------------ 最新资讯 start -------------------------------------->
 
-    <script type="text/html" id="zixun">
-        {{each zixun v}}
-        <div class="common_news_list">
-            <a href="article.html?id={{v.id}}" class="list_pic"><img src="{{v.cover}}" alt=""></a>
-            <h4><a href="article.html?id={{v.id}}">{{v.title}}</a></h4>
-            <p>
-                {{v.intro}}
-            </p>
-            <div class="new_info">
-                <span>
-                    标签：{{v.type}}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;
-                    阅读( {{v.read}} )&nbsp;&nbsp;&nbsp;<i class="fa fa-commenting"></i>&nbsp;
-                    评论( {{v.comment}} )
-                </span>
-                <b>发布于 {{v.date}}</b>
-            </div>
-        </div>
-        {{/each}}
-    </script>
-    <script>
-        article.latest(function (res) {
-            // console.log(res);
-            var sr = template('zixun', {
-                zixun: res.data
-            });
-            // 把sr放到 div.common_title 的后面
-            $('.common_title').after(sr);
-        });
-    </script>
+
+
+
+
+
+    <!------------------------------------------------ 最新资讯 start -------------------------------------->
     <!------------------------------------------------ 最新资讯 end -------------------------------------->
 
 
