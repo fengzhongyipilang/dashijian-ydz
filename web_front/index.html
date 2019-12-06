@@ -144,6 +144,7 @@
 
 
 
+
     <!------------------------------------------------ 导航分类 start -------------------------------------->
     <script type="text/html" id="fenlei">
         {{each fenlei v}}
@@ -154,7 +155,7 @@
     <script>
         // 获取请求结果
         category.show(function (res) { 
-            console.log(res);
+            // console.log(res);
             var str = template('fenlei',{
                 fenlei: res.data
             })
@@ -167,14 +168,31 @@
 
     <!------------------------------------------------ 导航分类 end -------------------------------------->
 
-
-
     <!------------------------------------------------ 热点图 start -------------------------------------->
    
     <script type="text/html" id="redian">
-     
+        {{each redian v k}} {{if k===0}}
+        <li class="first">
+            {{else}}
+            <li>
+                {{/if}}
+                <a><img src="{{v.cover}}" alt=""></a>
+                <p>{{v.title}}</p>
+            </li>
+            {{/each}}
     </script>
-   
+      
+    <script>
+
+article.hotpic(function(res) {
+            console.log(res)
+            var str = template("redian", {
+                redian: res.data
+            })
+            $('.focus_list').html(str)
+        })
+
+    </script>
    
     <!------------------------------------------------ 热点图 end -------------------------------------->
 
