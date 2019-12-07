@@ -178,7 +178,7 @@
         {{else}}
     <li>
         {{/if}}
-        <a><img src="{{v.cover}}" alt=""></a>
+        <a href='article.html?id={{v.id}}'><img src="{{v.cover}}" alt=""></a>
         <p>{{v.title}}</p>
     </li>
     {{/each}}
@@ -187,7 +187,7 @@
 
     <script>
         article.hotpic(function (res) {
-            console.log(res);
+            // console.log(res);
             var str = template('redian', {
                 redian: res.data
             })
@@ -198,14 +198,41 @@
 
     <!------------------------------------------------ 热点图 end -------------------------------------->
 
-    <script>
 
-    </script>
 
 
 
 
     <!------------------------------------------------ 最新资讯 start -------------------------------------->
+
+    <script type="text/html" id="zx">
+        {{each zixun val}}
+        <div class="common_news_list">
+                <a href="article.html?id={{val.id}}" class="list_pic"><img src="{{val.cover}}" alt=""></a>
+                <h4><a href="article.html?id={{val.id}}">{{val.title}}</a></h4>
+                <p>{{val.intro}}</p>
+                <div class="new_info">
+                    <span>标签：{{val.type}}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<i class="fa fa-eye"></i>&nbsp;阅读( {{val.read}}
+                        )&nbsp;&nbsp;&nbsp;<i class="fa fa-commenting"></i>&nbsp;评论( {{val.comment}} )</span>
+                    <b>{{val.date}}</b>
+                </div>
+            </div> 
+        {{/each}}
+
+    </script>
+
+
+    <script>
+        article.latest(function (res) {
+            console.log(res);
+
+            var str = template('zx', {
+                zixun: res.data
+            })
+            $('.common_title').after(str)
+        })
+    </script>
+
     <!------------------------------------------------ 最新资讯 end -------------------------------------->
 
 

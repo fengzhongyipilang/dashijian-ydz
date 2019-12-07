@@ -5,7 +5,8 @@ var apis = {
     // 分类相关接口
     category_show: baseUrl + 'category',
     article_hotpic: baseUrl + 'hotpic',
-
+    article_latest: baseUrl + 'latest',
+    
     // 文章相关接口
   
 
