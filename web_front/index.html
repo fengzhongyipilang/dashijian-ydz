@@ -30,11 +30,11 @@
                 <a href="javascript:;" class="level_one"><i class="fa fa-list-ul"></i>全部分类</a>
                 <ul class="level_two">
                     <li class="up"></li>
-                    
+
                 </ul>
             </div>
             <ul class="left_menu fl">
-                
+
             </ul>
             <ul class="right_menu fr">
                 <li><a href="#">科技专题</a></li>
@@ -46,8 +46,8 @@
     <div class="main_con clearfix">
         <div class="left_con">
             <ul class="focus_list">
-                
-                
+
+
             </ul>
 
             <div class="common_title">
@@ -55,7 +55,7 @@
                 <a href="#" class="more"><i class="fa fa-angle-double-right"></i></a>
             </div>
 
-            
+
 
         </div>
         <div class="right_con">
@@ -129,10 +129,10 @@
             <span>|</span>
             <a href="#">招聘人才</a>
             <span>|</span>
-            <a href="#">友情链接</a>		
+            <a href="#">友情链接</a>
         </div>
-        <p>CopyRight © 2019 深圳大事件信息技术股份有限公司   All Rights Reserved</p>
-        <p>电话：0755-****888    粤ICP备*******8号</p>
+        <p>CopyRight © 2019 深圳大事件信息技术股份有限公司 All Rights Reserved</p>
+        <p>电话：0755-****888 粤ICP备*******8号</p>
     </div>
 
     <script src="./js/jquery-1.12.4.min.js"></script>
@@ -154,49 +154,53 @@
 
     <script>
         // 获取请求结果
-        category.show(function (res) { 
+        category.show(function (res) {
             // console.log(res);
-            var str = template('fenlei',{
+            var str = template('fenlei', {
                 fenlei: res.data
             })
             // 把拼接结果添加到指定位置，
             $('.level_two').append(str);
             $('.left_menu').append(str)
-         })
-    
+        })
+
     </script>
 
     <!------------------------------------------------ 导航分类 end -------------------------------------->
 
     <!------------------------------------------------ 热点图 start -------------------------------------->
-   
-    <script type="text/html" id="redian">
-        {{each redian v k}} {{if k===0}}
-        <li class="first">
-            {{else}}
-            <li>
-                {{/if}}
-                <a><img src="{{v.cover}}" alt=""></a>
-                <p>{{v.title}}</p>
-            </li>
-            {{/each}}
-    </script>
-      
-    <script>
 
-article.hotpic(function(res) {
-            console.log(res)
-            var str = template("redian", {
+    <script type="text/html" id="redian">
+         <!-- 如果索引为0 <li class = 'first'>否则是常规的<li>   </li> -->
+           {{each redian v k}}
+           {{if k===0}}
+    <li class='first'>
+        {{else}}
+    <li>
+        {{/if}}
+        <a><img src="{{v.cover}}" alt=""></a>
+        <p>{{v.title}}</p>
+    </li>
+    {{/each}}
+
+    </script>
+
+    <script>
+        article.hotpic(function (res) {
+            console.log(res);
+            var str = template('redian', {
                 redian: res.data
             })
-            $('.focus_list').html(str)
+            $('.focus_list').html(str);
         })
 
     </script>
-   
+
     <!------------------------------------------------ 热点图 end -------------------------------------->
 
+    <script>
 
+    </script>
 
 
 
